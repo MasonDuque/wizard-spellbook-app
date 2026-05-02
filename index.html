@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wizard Spellbook</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="cover">
+      <h1>Arcane Spellbook</h1>
+      <div class="cover-grid">
+        <label>
+          Wizard Name
+          <input id="wizardName" placeholder="e.g. Elowen" />
+        </label>
+        <label>
+          Wizard Class
+          <input id="wizardClass" placeholder="e.g. School of Evocation" />
+        </label>
+        <label>
+          Wizard Level
+          <input id="wizardLevel" type="number" min="1" max="20" value="1" />
+        </label>
+      </div>
+      <p id="preparedRule">Prepared spells available: 1</p>
+    </header>
+
+    <main>
+      <section class="page" id="tocPage">
+        <h2>Table of Contents</h2>
+        <ol id="tocList">
+          <li>Prepared Spells</li>
+          <li>Learn a Spell</li>
+        </ol>
+      </section>
+
+      <section class="page" id="preparedPage">
+        <h2>Prepared Spells</h2>
+        <p id="preparedCount">0 / 1 prepared</p>
+        <ul id="preparedList"></ul>
+      </section>
+
+      <section class="page" id="learnPage">
+        <h2>Learn a Spell</h2>
+        <form id="spellForm">
+          <div class="form-grid">
+            <label>Spell Name <input name="name" required /></label>
+            <label>School <input name="school" required /></label>
+            <label>Level <input name="level" type="number" min="0" max="9" required /></label>
+            <label>Casting Time <input name="castingTime" required /></label>
+            <label>Range <input name="range" required /></label>
+            <label>Duration <input name="duration" required /></label>
+            <label>Components <input name="components" placeholder="V, S, M" required /></label>
+            <label>Image URL <input name="image" type="url" placeholder="https://..." /></label>
+          </div>
+
+          <h3>Spell Writing Guide (The Gorilla of Destiny)</h3>
+          <p class="hint">Enter numeric spell profile used to generate your spell writing details.</p>
+          <div class="form-grid">
+            <label>Damage Dice Count <input name="damageDiceCount" type="number" min="0" value="0" required /></label>
+            <label>Damage Dice Size <input name="damageDiceSize" type="number" min="0" value="0" required /></label>
+            <label>Targets Affected <input name="targets" type="number" min="1" value="1" required /></label>
+            <label>Area Size (ft) <input name="areaSize" type="number" min="0" value="0" required /></label>
+            <label>Save DC Modifier <input name="saveMod" type="number" value="0" required /></label>
+            <label>Concentration Rounds <input name="concentrationRounds" type="number" min="0" value="0" required /></label>
+          </div>
+
+          <label>Description
+            <textarea name="description" rows="4" placeholder="Spell details and effects..." required></textarea>
+          </label>
+
+          <button type="submit">Learn Spell</button>
+        </form>
+      </section>
+
+      <section id="spellPages"></section>
+    </main>
+
+    <template id="spellTemplate">
+      <article class="page spell-page">
+        <h2 class="spell-title"></h2>
+        <div class="spell-top">
+          <img class="spell-image" alt="Magic imagery for spell" />
+          <div>
+            <p><strong>School:</strong> <span class="spell-school"></span></p>
+            <p><strong>Level:</strong> <span class="spell-level"></span></p>
+            <p><strong>Casting Time:</strong> <span class="spell-casting"></span></p>
+            <p><strong>Range:</strong> <span class="spell-range"></span></p>
+            <p><strong>Duration:</strong> <span class="spell-duration"></span></p>
+            <p><strong>Components:</strong> <span class="spell-components"></span></p>
+          </div>
+        </div>
+        <p class="spell-description"></p>
+
+        <h3>Spell Writing Guide Numbers</h3>
+        <ul class="guide-list"></ul>
+
+        <label class="prepared-toggle"><input type="checkbox" class="prepare-checkbox" /> Prepared</label>
+        <button class="remove-btn" type="button">Forget Spell</button>
+      </article>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
