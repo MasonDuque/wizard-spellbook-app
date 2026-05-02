@@ -1,0 +1,102 @@
+:root {
+  --ink: #2f1708;
+  --paper: #f3e6c8;
+  --paper-edge: #ddca9d;
+  --gold: #d9b26d;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #1a120d;
+  font-family: "IM Fell English", serif;
+  color: var(--ink);
+}
+
+.book-shell { width: min(980px, 95vw); }
+.view { display: none; }
+.view.active { display: block; }
+
+.cover-page {
+  min-height: 82vh;
+  border-radius: 16px;
+  border: 4px solid #4f2c16;
+  padding: 2.5rem;
+  color: #f8e9c8;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 221, 168, 0.2), transparent 26%),
+    radial-gradient(circle at 80% 70%, rgba(255, 221, 168, 0.16), transparent 24%),
+    repeating-linear-gradient(35deg, #5a3219 0 8px, #4b2915 8px 16px, #3e220f 16px 24px);
+  box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.4), 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.cover-title h1 {
+  margin: 0;
+  font: 700 clamp(2rem, 4.8vw, 4rem) "Cinzel", serif;
+  letter-spacing: 0.04em;
+}
+
+.cover-title p {
+  margin-top: 1rem;
+  font-size: clamp(1.2rem, 2.6vw, 2rem);
+}
+
+.corner-btn {
+  position: absolute;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  border: 1px solid #e4c588;
+  background: rgba(30, 13, 4, 0.7);
+  color: #ffe4b3;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.page {
+  min-height: 74vh;
+  background: linear-gradient(180deg, #faefcf, var(--paper));
+  border: 2px solid #b08a50;
+  box-shadow: inset 0 0 0 10px rgba(176, 138, 80, 0.18);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+}
+
+h2, h3 { font-family: "Cinzel", serif; margin-top: 0; }
+
+.page-nav {
+  margin-top: .75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button, input, textarea {
+  font: inherit;
+  color: var(--ink);
+}
+
+button { cursor: pointer; }
+
+.form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: .6rem; }
+label { display: flex; flex-direction: column; gap: .2rem; margin-bottom: .5rem; }
+input, textarea { padding: .4rem; border: 1px solid #b19664; background: #fffdf4; }
+
+.spell-art {
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  border: 2px solid var(--paper-edge);
+  margin-bottom: .8rem;
+}
+
+.warn { margin-top: .5rem; }
