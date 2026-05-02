@@ -17,6 +17,12 @@
             <h1 id="coverName">Unnamed Wizard's Spellbook</h1>
             <p id="coverMeta">Level 1 Apprentice</p>
           </div>
+          <form id="coverProfileForm" class="cover-form">
+            <label>Wizard Name <input id="coverWizardName" name="wizardName" required /></label>
+            <label>Subclass <input id="coverWizardClass" name="wizardClass" required /></label>
+            <label>Level <input id="coverWizardLevel" name="wizardLevel" type="number" min="1" max="20" required /></label>
+            <button type="submit">Save Cover</button>
+          </form>
           <button id="openBookBtn" class="corner-btn">Open the Book ➜</button>
         </article>
       </section>

@@ -10,6 +10,10 @@ const refs = {
   coverName: document.getElementById("coverName"),
   coverMeta: document.getElementById("coverMeta"),
   openBookBtn: document.getElementById("openBookBtn"),
+  coverProfileForm: document.getElementById("coverProfileForm"),
+  coverWizardName: document.getElementById("coverWizardName"),
+  coverWizardClass: document.getElementById("coverWizardClass"),
+  coverWizardLevel: document.getElementById("coverWizardLevel"),
   pageContent: document.getElementById("pageContent"),
   pageLabel: document.getElementById("pageLabel"),
   prevBtn: document.getElementById("prevBtn"),
@@ -37,6 +41,9 @@ function updateCover() {
   const profile = defaultProfile();
   refs.coverName.textContent = `${profile.name}'s Spellbook`;
   refs.coverMeta.textContent = `Level ${profile.level} ${profile.class}`;
+  refs.coverWizardName.value = profile.name;
+  refs.coverWizardClass.value = profile.class;
+  refs.coverWizardLevel.value = profile.level;
 }
 
 function spellImageFromGuide(spell) {
@@ -225,6 +232,18 @@ function renderPage() {
     });
   });
 }
+
+
+refs.coverProfileForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  state.profile = {
+    name: refs.coverWizardName.value.trim() || "Unnamed Wizard",
+    class: refs.coverWizardClass.value.trim() || "Apprentice",
+    level: Number(refs.coverWizardLevel.value) || 1,
+  };
+  save();
+  updateCover();
+});
 
 refs.openBookBtn.addEventListener("click", () => {
   refs.coverView.classList.remove("active");
